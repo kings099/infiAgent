@@ -47,12 +47,39 @@ def detect_encoding(file_path: Path) -> str:
         return 'utf-8'
 
 
+# 常见二进制文件后缀名（黑名单）
+BINARY_EXTENSIONS = {
+    # 图片
+    '.png', '.jpg', '.jpeg', '.gif', '.bmp', '.ico', '.svg', '.webp', '.tiff', '.tif',
+    # 文档
+    '.pdf', '.doc', '.docx', '.xls', '.xlsx', '.ppt', '.pptx',
+    # 压缩文件
+    '.zip', '.tar', '.gz', '.bz2', '.rar', '.7z', '.xz',
+    # 可执行文件
+    '.exe', '.dll', '.so', '.dylib', '.bin', '.app',
+    # 音视频
+    '.mp3', '.mp4', '.avi', '.mov', '.wav', '.flac', '.mkv', '.webm',
+    # 其他
+    '.pyc', '.pyo', '.o', '.a', '.lib', '.class', '.jar'
+}
+
+
 def is_binary_file(file_path: Path) -> bool:
-    """判断是否为二进制文件"""
+    """
+    判断是否为二进制文件
+    
+    检测策略：
+    1. 先检查文件后缀名（高效）
+    2. 如果后缀名不在黑名单中，再检查文件内容（准确）
+    """
     try:
+        # 策略1：检查文件后缀名
+        if file_path.suffix.lower() in BINARY_EXTENSIONS:
+            return True
+        
+        # 策略2：检查文件内容（检查是否包含 null 字节）
         with open(file_path, 'rb') as f:
             chunk = f.read(1024)
-        # 检查是否包含 null 字节
         return b'\x00' in chunk
     except Exception:
         return False
