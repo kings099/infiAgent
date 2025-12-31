@@ -15,10 +15,11 @@ from datetime import datetime
 class ConversationStorage:
     """对话历史存储器"""
     
-    def __init__(self):
+    def __init__(self, task_id: str = None):
         """初始化存储器 - 使用用户主目录（跨平台）"""
         self.conversations_dir = Path.home() / "mla_v3" / "conversations"
         self.conversations_dir.mkdir(parents=True, exist_ok=True)
+        self.task_id = task_id
     
     def _generate_filename(self, task_id: str, agent_id: str) -> str:
         """生成对话文件名：hash + 最后文件夹名 + agent_id"""

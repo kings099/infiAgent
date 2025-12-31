@@ -1,12 +1,22 @@
-# MLA V3 - 打造专属领域的 SOTA 级智能体
 
-[English](README.md) | [简体中文](README_CN.md)
 
-<p align="center">
-  <img src="https://img.shields.io/badge/version-3.0.0-blue.svg" alt="Version">
-  <img src="https://img.shields.io/badge/python-3.9+-green.svg" alt="Python">
-  <img src="https://img.shields.io/badge/license-GPL-blue.svg" alt="License: GPL">
-</p>
+<div align="center">
+  <img src="assets/logo.png" alt="infiAgent Logo" width="200">
+
+  <h1>MLA V3 - 打造专属领域的 SOTA 级智能体</h1>
+
+  <p>
+    <img src="https://img.shields.io/badge/version-3.0.0-blue.svg" alt="Version">
+    <img src="https://img.shields.io/badge/python-3.9+-green.svg" alt="Python">
+    <img src="https://img.shields.io/badge/license-GPL-blue.svg" alt="License: GPL">
+  </p>
+
+  <p>
+    <a href="README.md">English</a> | <a href="README_CN.md">简体中文</a>
+  </p>
+</div>
+
+---
 
 ## 🌟 简介
 
@@ -28,6 +38,10 @@
 - ✅ **人类水平质量**：论文可通过 EI/IEEE 会议的人工评审
 - 🧪 **科学计算**：ECM 蛋白质配比仿真、物流排班、作业批改等
 - 🔬 **完整研究流程**：文献收集、实验设计、图表生成和论文撰写
+
+### 动态
+
+- 现在已支持 gemini api。重新拉取仓库，mla-tool-server restart，或者重新拉取 docker 即可生效。配置文件参考配置文件夹 gemini 开头的样板格式。
 
 注意目前只支持 python 编程，早期版本execute_command只支持只读命令，目前已经支持所有命令（包括删除等危险命令），推荐在 docker 环境下使用。
 
